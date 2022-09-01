@@ -31,7 +31,7 @@ SELECT name FROM divisions WHERE country = 'Scotland';
 ```sql
 <!-- Copy solution here -->
 SELECT code FROM divisions WHERE name = 'Bundesliga';
-SELECT COUNT(id) FROM matches WHERE division_code = 'D1' AND 'Freiburg' IN (hometeam, awayteam);
+SELECT COUNT(matches) FROM matches WHERE division_code = 'D1' AND 'Freiburg' IN (hometeam, awayteam);
 ```
 
 5) Find the unique names of the teams which include the word "City" in their name (as entered in the database)
@@ -46,15 +46,15 @@ SELECT DISTINCT hometeam FROM matches WHERE LOWER(hometeam) LIKE LOWER('%City%')
 
 ```sql
 <!-- Copy solution here -->
-SELECT COUNT(DISTINCT hometeam) FROM matches WHERE division_code = 'F1';
-SELECT COUNT(DISTINCT hometeam) FROM matches WHERE division_code = 'F2';
+SELECT COUNT(DISTINCT hometeam) FROM matches WHERE division_code = 'F1' OR division_code = 'F2';
+
 ```
 
 7) Have Huddersfield played Swansea in the period covered?
 
 ```sql
 <!-- Copy solution here -->
-
+SELECT * FROM matches WHERE hometeam = 'Swansea' AND awayteam = 'Huddersfield' OR awayteam = 'Swansea' AND hometeam = 'Huddersfield';
 
 ```
 
@@ -62,7 +62,7 @@ SELECT COUNT(DISTINCT hometeam) FROM matches WHERE division_code = 'F2';
 
 ```sql
 <!-- Copy solution here -->
-
+SELECT COUNT(*) FROM matches WHERE division_code = 'N1' AND (ftr = 'D' AND season BETWEEN 2010 AND 2015);
 
 ```
 
@@ -70,7 +70,7 @@ SELECT COUNT(DISTINCT hometeam) FROM matches WHERE division_code = 'F2';
 
 ```sql
 <!-- Copy solution here -->
-
+SELECT * FROM matches WHERE division_code = 'E0' ORDER BY (fthg + ftag) DESC, fthg DESC;
 
 ```
 
@@ -78,7 +78,7 @@ SELECT COUNT(DISTINCT hometeam) FROM matches WHERE division_code = 'F2';
 
 ```sql
 <!-- Copy solution here -->
-
+SELECT division_code, season, SUM(fthg + ftag) FROM matches GROUP BY division_code, season ORDER BY sum DESC LIMIT 1;
 
 ```
 
