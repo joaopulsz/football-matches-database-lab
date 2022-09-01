@@ -6,7 +6,7 @@ Each of the questions/tasks below can be answered using a `SELECT` query. When y
 
 ```sql
 <!-- Copy solution here -->
-
+SELECT * FROM matches WHERE season = 2017;
 
 ```
 
@@ -14,7 +14,7 @@ Each of the questions/tasks below can be answered using a `SELECT` query. When y
 
 ```sql
 <!-- Copy solution here -->
-
+SELECT * FROM matches WHERE 'Barcelona' IN (hometeam, awayteam);
 
 ```
 
@@ -22,7 +22,7 @@ Each of the questions/tasks below can be answered using a `SELECT` query. When y
 
 ```sql
 <!-- Copy solution here -->
-
+SELECT name FROM divisions WHERE country = 'Scotland';
 
 ```
 
@@ -30,15 +30,15 @@ Each of the questions/tasks below can be answered using a `SELECT` query. When y
 
 ```sql
 <!-- Copy solution here -->
-
-
+SELECT code FROM divisions WHERE name = 'Bundesliga';
+SELECT COUNT(id) FROM matches WHERE division_code = 'D1' AND 'Freiburg' IN (hometeam, awayteam);
 ```
 
 5) Find the unique names of the teams which include the word "City" in their name (as entered in the database)
 
 ```sql
 <!-- Copy solution here -->
-
+SELECT DISTINCT hometeam FROM matches WHERE LOWER(hometeam) LIKE LOWER('%City%');
 
 ```
 
@@ -46,8 +46,8 @@ Each of the questions/tasks below can be answered using a `SELECT` query. When y
 
 ```sql
 <!-- Copy solution here -->
-
-
+SELECT COUNT(DISTINCT hometeam) FROM matches WHERE division_code = 'F1';
+SELECT COUNT(DISTINCT hometeam) FROM matches WHERE division_code = 'F2';
 ```
 
 7) Have Huddersfield played Swansea in the period covered?
